@@ -12,7 +12,7 @@ DB:sqlite3 or mysql
 pipenvを使用してPipfileから必須モジュールをインストールして下さい。
 
 ## init
-以下のコードを実行して、tmpフォルダ,dbフォルダを作成してください。
+以下のコードを実行して、tmpフォルダ,データベースを作成してください。
 ```bash
 python init.py
 ```
