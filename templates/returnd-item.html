@@ -1,0 +1,46 @@
+{% extends "admin_base.html" %}
+{% block body %}
+<h3 class="text-center">備品返却</h3>
+<!-- <div class="row justify-content-center">
+    <form method="POST">
+        <label>返却する本の貸し出しID<input type="text" name="lendid"  class="form-control" required></label><br>
+        <input type="submit" value="返却" class="btn btn-primary mx-auto d-block">
+    </form>
+</div> -->
+<table class="table">
+    <tr>
+        <th>名前</th>
+        <th>所属スクール</th>
+        <th>備品名</th>
+        <th>備品種別</th>
+        <th>貸出日</th>
+        <th>返却予定日</th>
+    </tr>
+        <tr>
+            <th>
+                {{lendlist.1}}
+            </th>
+            <th>
+                {{lendlist.2}}
+            </th>
+            <th>
+                {{lendlist.3}}
+            </th>
+            <th>
+                {{lendlist.4}}
+            </th>
+            <th>
+                {{lendlist.5}}
+            </th>
+            <th>
+                {{lendlist.6}}
+            </th>
+        </tr>
+</table>
+<h4 class="text-center">返却しますか？</h4>
+<h6 class="text-center">返却してから履歴の反映まで少々時間がかかります</h6>
+<form action="/admin/returnd-item" method="POST">
+    <input type="hidden" name="lendid" value="{{lendlist.0}}">
+    <input type="submit" value="返却" class="btn btn-primary mx-auto d-block">
+</form>
+{% endblock %}

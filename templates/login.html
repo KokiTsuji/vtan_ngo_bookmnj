@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- <div class="row"> -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes list-group">
+            {% for category, message in messages %}
+                <li class="{{ category }} list-group-item list-group-item-primary">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+    <h3 class="text-center mx-auto">管理者ログイン</h3>
+<!-- </div> -->
+<div class="card card-body">
+    <div class="row justify-content-center">
+        <form method="POST">
+            <div class="form-group">
+                <label>ユーザー名<input type="text" name="username" class="form-control" required></label>
+            </div>
+            <div class="form-group">
+                <label>パスワード<input type="password" name="password" class="form-control" required></label>
+            </div>
+            <input type="submit" value="ログイン" class="btn btn-primary mx-auto d-block">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

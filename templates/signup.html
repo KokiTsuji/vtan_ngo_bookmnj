@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes list-group">
+            {% for category, message in messages %}
+                <li class="{{ category }} list-group-item list-group-item-primary">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<h3 class="text-center">管理者追加</h3>
+<div class="card card-body">
+    <div class="row justify-content-center">
+        <form method="POST">
+            <div class="form-group">
+                <label>ユーザー名<input type="text" name="username" class="form-control" placeholder="hanako" required></label>
+            </div><br>
+            <div class="form-group">
+                <label>パスワード<input type="password" name="password" class="form-control" required></label>
+            </div><br>
+            <div class="form-group">
+                <label>名前<input type="text" name="name" class="form-control" placeholder="バンタン 花子" required></label>
+            </div><br>
+            <div class="form-group">
+                <label>所属スクール<input type="text" name="school" placeholder="バンタンテックフォードアカデミー" class="form-control"></label>
+            </div><br>
+            <div class="form-group">
+                <label>所属クラス<input type="text" name="yourclass" placeholder="IT総合" class="form-control"></label>
+            </div><br>
+            <div class="form-group">
+                <label>教員番号<input type="text" name="teacher_id" placeholder="21010000" class="form-control"></label>
+            </div><br>
+            <input type="submit" value="新規登録" class="btn btn-primary mx-auto d-block">
+        </form>
+    </div>
+</div>
+{% endblock %}

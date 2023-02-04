@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- <div class="row justify-content-start"> -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes list-group">
+                {% for category, message in messages %}
+                    <li class="{{ category }} list-group-item list-group-item-primary">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <h3 class="text-center">メインメニュー</h3>
+    <h4 class="text-center">書籍</h4>
+    <a href="/lending" class="btn btn-primary btn-lg mx-auto d-block"><i class="fas fa-book fa-fw"></i> 書籍貸出</a><br>
+    <a href="/listlending" class="btn btn-primary btn-lg mx-auto d-block"><i class="fas fa-undo"></i></i> 書籍返却・貸出履歴</a>
+    <br />
+    <h4 class="text-center">備品</h4>
+    <a href="/lending-item" class="btn btn-success btn-lg mx-auto d-block"><i class="fas fa-archive fa-fw"></i> 備品貸出</a>
+    <br />
+    <a href="/listlending-item" class="btn btn-success btn-lg mx-auto d-block"><i class="fas fa-undo"></i> 備品返却・貸出履歴</a>
+    <br />
+    <h4 class="text-center">その他</h4>
+    <a href="/writecsv" class="btn btn-info btn-lg mx-auto d-block"><i class="fas fa-file-csv fa-fw"></i></i> 貸出履歴書き出し</a>
+    <br />
+<!-- </div> -->
+{% endblock %}

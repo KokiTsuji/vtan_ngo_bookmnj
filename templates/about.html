@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Vantan名古屋備品管理システムについて</h1><br>
+<h2>What is this?</h2>
+<p>このWebアプリはシンプルな備品貸出/返却システムです。<br>備品の貸出、返却、貸出履歴確認が簡単に使えます。</p>
+<h2>How to use?</h2>
+<h3>備品貸出画面の使い方</h3>
+<p>トップ画面の[書籍/備品]→[貸出]またはヘッダーの[書籍/備品]→[貸出]から備品貸出画面に移動することが出来ます。</p>
+<img src="/static/images/about_lend.png" class="img-thumbnail img-fluid">
+<p>備品を貸出するには名前、所属スクール、貸出する書籍名、返却予定日を入力し、[貸出]をクリックします。</p><br>
+<h3>書籍返却画面の使い方</h3>
+<p>トップ画面の[返却・貸出履歴一覧]またはヘッダーの[返却・貸出履歴一覧]から書籍返却画面に移動することが出来ます。</p>
+<img src="/static/images/about_return.png" class="img-thumbnail img-fluid">
+<p>備品を返却するには貸出履歴一覧から返却対象の書籍を見つけ、同じ列の[返却する]をクリックします。</p>
+<p>返却確認画面が表示されるので内容を確認して[返却]をクリックします。</p>
+<font color="red"><p>なお、備品の返却には管理者アカウントでのログインが必要です。</p></font><br>
+<h3>貸出履歴一覧画面の使い方</h3>
+<p>トップ画面の[書籍/備品]→[返却・貸出履歴一覧]またはヘッダーの[書籍/備品]→[返却・貸出履歴一覧]から貸出履歴画面に移動することが出来ます。</p>
+<img src="/static/images/about_return.png" class="img-thumbnail img-fluid">
+<p>貸出履歴一覧では備品の貸出履歴を確認する事が出来ます。</p><br>
+<h2>このWebアプリを共同で開発したい方、ソースコードを見たい方、<br>その他ご要望がある方へ</h2>
+<p>VantanStudentCommunity @辻 皓貴 -VTAへDMして下さい。</p>
+{% endblock %}

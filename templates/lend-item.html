@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block body %}
+<h3 class="text-center">備品貸出</h3>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes list-group">
+            {% for category, message in messages %}
+                <li class="{{ category }} list-group-item list-group-item-primary">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<div class="card card-body">
+    <div class="form-group row justify-content-center">
+        <form id="lend" action="/oklending-item" method="POST">
+            <fieldset class="form-group">
+                <legend class="col-form-label">備品種別</legend>
+                    <input type="radio" name="itemtype" value="備品/VTA" id="item1"required>
+                    <label class="form-check-label" for="item1"><i class="fas fa-archive fa-fw"></i> 備品/VTA</label><br>
+                    <input type="radio" name="itemtype" value="備品/VGA" id="item2"required>
+                    <label class="form-check-label" for="item2"><i class="fas fa-archive fa-fw"></i> 備品/VGA</label><br>
+                    <input type="radio" name="itemtype" value="備品/VDI" id="item3"required>
+                    <label class="form-check-label" for="item3"><i class="fas fa-archive fa-fw"></i> 備品/VDI</label><br>
+                </label>
+            </fieldset><br>
+            <div class="form-group">
+                <label>姓<input type="text" name="name_sei" class="form-control" placeholder="バンタン 太郎" required></label>
+                <label>名<input type="text" name="name_mei" class="form-control" placeholder="バンタン 太郎" required></label>
+            </div>
+
+            <fieldset class="form-group">
+                <legend class="col-form-label">所属スクール</legend>
+                    <input type="radio" name="school" value="VTA" id="school1" required>
+                    <label class="form-check-label" for="school1">バンタンテックフォードアカデミー</label><br>
+                    <input type="radio" name="school" value="VGA" id="school2"required>
+                    <label class="form-check-label" for="school2">バンタンゲームアカデミー</label><br>
+                    <input type="radio" name="school" value="VDI" id="school3" required>
+                    <label class="form-check-label" for="school3"> バンタンデザイン研究所</label>
+                </label>
+            </fieldset><br>
+
+            <div class="form-group">
+                <label>貸出備品名
+                    <input type="text" name="bookname" class="form-control" placeholder="Macbookの充電器" list="item" required>
+                        <datalist id="item">
+                            <option value="Macbookの充電器"></option>
+                            <option value="ペンタブレット"></option>
+                            <option value="xboxコントローラー"></option>
+                            <option value="マウス"></option>
+                            <option value="MacBook Pro"></option>
+                            <option value="MacBook Air"></option>
+                        </datalist>
+                </label>
+            </div><br>
+            <!-- <div class="form-group">
+                <label>返却予定日<input type="date" min="{{date}}" max="{{d_1d}}" name="returnsche_date" class="form-control" required></label>
+            </div> -->
+            <input type="submit" value="貸出" class="btn btn-primary  mx-auto d-block">
+        </form>
+    </div>
+</div>
+
+<script src="static/js/lend.js"></script>
+{% endblock %}

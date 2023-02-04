@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes list-group">
+            {% for category, message in messages %}
+                <li class="{{ category }} list-group-item list-group-item-primary">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<h3 class="text-center">書籍貸出履歴一覧</h3>
+<!-- <a class="btn btn-primary mx-auto d-block" href="{{onlyunreturned}}">全て表示/未返却のみ表示切り替え</a> -->
+<h5 class="text-center">返却にはログインが必要です</h5>
+<!-- <a class="btn btn-primary mx-auto d-block" href="{{onlyunreturned}}">全て表示/未返却のみ表示切り替え</a><br> -->
+
+<p>
+    <a class="btn btn-primary mx-auto d-block" data-toggle="collapse" href="#options" role="button" aria-expanded="false" aria-controls="collapseExample">
+        絞り込み<i class="fas fa-caret-down"></i>
+    </a>
+</p>
+
+<div class="collapse" id="options">
+    <div class="card card-body">
+        <form method="GET">
+            <h5>名前検索</h5>
+            <div class="form-group">
+                <label>姓<input type="text" name="name_sei" class="form-control" placeholder="バンタン"></label>
+                <label>名<input type="text" name="name_mei" class="form-control" placeholder="花子"></label>
+            </div><br>
+            <h5>日付指定</h5>
+            <div class="form-group">
+                <label>貸出日<input type="date" class="form-control" name="startdate"></label>
+                <span>〜</span>
+                <label>返却日<input type="date" class="form-control" name="enddate"></label>
+            </div><br>
+
+            <h5>その他</h5>
+            <div class="form-check">
+                <input value="yes" name="onlyunreturned" class="form-check-input" type="checkbox" id="onlyunreturned">
+                <label class="form-check-label" for="onlyunreturned">未返却のみ表示</label>
+            </div><br>
+            <a href="/listlending">絞り込みをリセット</a>
+            <input type="submit" value="この条件で検索する" class="btn btn-primary mx-auto d-block">
+        </form>
+    </div>
+</div>
+
+{{ pagination.info }}
+{{ pagination.links }}
+
+<div class="table-responsive">
+    <table class="table text-nowrap">
+        <thead>
+            <tr>
+                <th>名前</th>
+                <th>所属スクール</th>
+                <th>書籍名</th>
+                <th>貸出日</th>
+                <th>返却予定日</th>
+                <th>返却状況</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <th>
+                    {{row.1}}
+                </th>
+                <th>
+                    {{row.2}}
+                </th>
+                <th>
+                    {{row.3}}
+                </th>
+                <th>
+                    {{row.4}}
+                </th>
+                <th>
+                    {{row.5}}
+                </th>
+                {% if row.6 == None %}
+                <th>
+                    <a href="/admin/returnd?lendid={{row.0}}">返却する</a>
+                </th>
+                {% else %}
+                <th>
+                    {{row.6}}
+                </th>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{{ pagination.links }}
+
+{% endblock %}
