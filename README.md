@@ -62,3 +62,5 @@ ORM:SQLAlchemy
 
 ## Todo
 ・UI/UX改善
+・履歴削除機能
+・複数アイテム一括登録機能
